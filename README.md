@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# GEDO Dashboard
 
-First, run the development server:
+Dashboard para la gestión de documentación de trabajadores de empresas contratistas industriales.
+
+## 🚀 Clonar y levantar el proyecto en otra máquina
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/CesarDanielSaavedra/gedo.git
+cd gedo
+```
+
+### 2. Instalar dependencias
+
+Asegurate de tener Node.js (v18 o superior recomendado) y npm instalados.
+
+```bash
+npm install
+```
+
+### 3. Levantar el entorno de desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El proyecto estará disponible en [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Recomendaciones adicionales
+- Si usás Windows y tenés problemas con PowerShell, podés abrir una terminal bash o CMD.
+- Si usás VS Code, se recomienda instalar las extensiones de Tailwind CSS y ESLint para mejor experiencia de desarrollo.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Variables de entorno
+Por ahora el proyecto no requiere variables de entorno personalizadas. Si en el futuro se agregan, se documentarán aquí.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Stack tecnológico
+- Next.js 15 (App Router)
+- TypeScript
+- Material-UI (MUI)
+- Tailwind CSS
+- React Hook Form
+- TanStack Query
+- Zustand
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 Convenciones y arquitectura
+Ver el archivo [`CONVENTIONS.md`](./CONVENTIONS.md) para detalles sobre estructura, estilos y buenas prácticas del proyecto.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Comandos útiles
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev       # Levanta el entorno de desarrollo
+npm run build     # Compila el proyecto para producción
+npm run start     # Inicia el servidor en modo producción
+npm run lint      # Corre el linter
+```
+
+---
+
+## 👤 Autor
+Cesar Daniel Saavedra
