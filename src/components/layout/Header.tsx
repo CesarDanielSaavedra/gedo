@@ -1,41 +1,60 @@
 "use client";
-
-import { AppBar, Toolbar, Typography, IconButton, Box, Badge, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Box, Badge, Avatar, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useMenu } from '@/hooks/useMenu';
 
 export default function Header() {
-  return (
-    <AppBar>
-        <Toolbar>
-            {/* Menú hamburguesa */}
-            <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                <MenuIcon />
-            </IconButton>
+    
+    const userMenu = useMenu();
 
-            {/* Logo GEDO */}
-            <Typography variant="h6" component="div">
-                GEDO
-            </Typography>
+    return (
+        <AppBar>
+            <Toolbar>
+                {/* Menú hamburguesa */}
+                <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                    <MenuIcon />
+                </IconButton>
 
-            {/* Espaciador */}
-            <Box sx={{ flexGrow: 1 }} />
+                {/* Logo GEDO */}
+                <Typography variant="h6" component="div">
+                    GEDO
+                </Typography>
 
-            {/* Icono de notificaciones */}
-            <IconButton size="large" color="inherit">
-                <Badge color="warning" variant="dot">
-                    <NotificationsIcon />
-                </Badge>
-            </IconButton>
+                {/* Espaciador */}
+                <Box sx={{ flexGrow: 1 }} />
 
-            {/* Avatar de usuario */}
-            <IconButton size="large" color="inherit">
-                <Avatar alt="Usuario" src="">
-                    {/* DG */}
-                </Avatar>
-            </IconButton>
-        </Toolbar>
-    </AppBar>
+                {/* Icono de notificaciones */}
+                <IconButton size="large" color="inherit">
+                    <Badge color="warning" variant="dot">
+                        <NotificationsIcon />
+                    </Badge>
+                </IconButton>
+
+                {/* Avatar de usuario */}
+                <IconButton 
+                    size="large" 
+                    color="inherit" 
+                    onClick={userMenu.handleOpen}
+                >
+                    <Avatar alt="Usuario" src="">
+                        {/* DG 
+                        asdasd */}
+                    </Avatar>
+                </IconButton>
+                
+                {/* Menú desplegable de usuario */}
+                <Menu
+                    anchorEl={userMenu.anchorEl}
+                    open={userMenu.open}                    
+                    onClose={userMenu.handleClose}
+                    transitionDuration={200}
+                >
+                    <MenuItem onClick={userMenu.handleClose}>Perfil</MenuItem>
+                    <MenuItem onClick={userMenu.handleClose}>Cerrar sesión</MenuItem>
+                </Menu>
+            </Toolbar>
+        </AppBar>
     
   );
 }

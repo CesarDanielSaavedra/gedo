@@ -72,6 +72,81 @@ src/
 
 ## 💻 Estilo de Código
 
+## 🧩 Organización de Funciones y Lógica
+
+### 1. Funciones internas del componente
+- Handlers y helpers simples que solo usa un componente van dentro del mismo componente.
+  ```tsx
+  export default function Header() {
+    const handleMenuOpen = () => { ... };
+    return (...);
+  }
+  ```
+
+### 2. Hooks personalizados
+- Lógica reutilizable entre varios componentes va en hooks propios, en `src/hooks/` o en la carpeta del feature.
+  ```tsx
+  // src/hooks/useToggle.ts
+  import { useState } from 'react';
+  export function useToggle(initial = false) {
+    const [open, setOpen] = useState(initial);
+    const toggle = () => setOpen((v) => !v);
+    return [open, toggle] as const;
+  }
+  ```
+
+### 3. Funciones utilitarias (helpers)
+- Funciones puras y reutilizables van en `src/utils/`.
+  ```tsx
+  // src/utils/formatDate.ts
+  export function formatDate(date: Date) {
+    // ...
+  }
+  ```
+
+### 4. Estado global
+- Estado compartido entre muchos componentes va en stores de Zustand en `src/stores/`.
+  ```tsx
+  // src/stores/userStore.ts
+  import { create } from 'zustand';
+  export const useUserStore = create((set) => ({
+    user: null,
+    setUser: (user) => set({ user }),
+  }));
+  ```
+
+### 5. Funciones asociadas a features
+- Lógica específica de un módulo va en la carpeta del feature (ej: `src/features/auth/hooks/useLogin.ts`).
+
+### 6. Convención de nombres
+- Hooks: `useNombre`
+- Handlers: `handleAccion`
+- Helpers: verbo + objeto (ej: `formatDate`)
+
+### 7. Ejemplo en un componente
+```tsx
+import { useState } from 'react';
+import { formatDate } from '@/utils/formatDate';
+import { useAuth } from '@/features/auth/hooks/useAuth';
+
+export default function Header() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { user, logout } = useAuth();
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    // ...JSX
+  );
+}
+```
+
 ### Componentes y Funciones
 
 **Componentes de React:**
